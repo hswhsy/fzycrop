@@ -1,0 +1,3 @@
+useDynLib(ecocropK)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp, evalCpp)
