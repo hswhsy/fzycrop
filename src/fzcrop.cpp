@@ -30,8 +30,8 @@ float ecocropK(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, N
     cropparam.Ropmax = inparams[9];
     cropparam.Rmax = inparams[10];
 
-    if(rainfed[0]==true)irrig=1;
-    else irrig=0;
+    if(rainfed[0]==true)irrig=0;
+    else irrig=1;
 
     float suitability [size];
     float maxsuit=0.;
