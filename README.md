@@ -10,7 +10,8 @@ Windows (in R)
 -------------
 #install Rtools and other dependencies   
 #https://cran.r-project.org/bin/windows/Rtools/   
-install.packages("devtools")   
-install.packages("Rcpp")   
+#install.packages("devtools")   
+#install.packages("Rcpp")   
+   
 library(devtools)   
 install_github("hswhsy/ecocropK")
