@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // ecocropK
-float ecocropK(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed);
-RcppExport SEXP _ecocropK_ecocropK(SEXP inparamsSEXP, SEXP TmaxSEXP, SEXP TminSEXP, SEXP PrcpSEXP, SEXP rainfedSEXP) {
+List ecocropK(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed, String method);
+RcppExport SEXP _ecocropK_ecocropK(SEXP inparamsSEXP, SEXP TmaxSEXP, SEXP TminSEXP, SEXP PrcpSEXP, SEXP rainfedSEXP, SEXP methodSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -16,13 +16,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type Tmin(TminSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type Prcp(PrcpSEXP);
     Rcpp::traits::input_parameter< LogicalVector >::type rainfed(rainfedSEXP);
-    rcpp_result_gen = Rcpp::wrap(ecocropK(inparams, Tmax, Tmin, Prcp, rainfed));
+    Rcpp::traits::input_parameter< String >::type method(methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(ecocropK(inparams, Tmax, Tmin, Prcp, rainfed, method));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_ecocropK_ecocropK", (DL_FUNC) &_ecocropK_ecocropK, 5},
+    {"_ecocropK_ecocropK", (DL_FUNC) &_ecocropK_ecocropK, 6},
     {NULL, NULL, 0}
 };
 
