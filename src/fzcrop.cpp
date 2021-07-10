@@ -14,7 +14,9 @@ List ecocropK(NumericVector inparams,
               NumericVector Tmin,
               NumericVector Prcp,
               LogicalVector rainfed = true,
-              String method = "median"){
+              String method = "median")
+{
+    //init
     int size = Tmax.size();
     List out = List::create(_["Suitability"], _["GrowingPeriod"]);
     NumericVector suit(size);
@@ -28,6 +30,7 @@ List ecocropK(NumericVector inparams,
     crop.setResolution(_resolution);
     crop.setSeasonSummary(method.get_cstring());
 
+    //run fzycrop
     for(int i=0;i<size;i++){
         crop.setMonth(i);
         for(int j=0;j<size;j++){
@@ -37,10 +40,14 @@ List ecocropK(NumericVector inparams,
             crop.setPrcp(j,Prcp[idx]);
         }
         crop.Suitrun();
+    }
+    crop.calcMaxSuit();
+
+    //output
+    for(int i=0; i<size; i++){
         suit[i] = crop.getSuitability(i);
         growingPeriod[i] = crop.getGrowingPeriod(i);
     }
-    crop.calcMaxSuit();
     out[0] = suit;
     out[1] = growingPeriod;
 
