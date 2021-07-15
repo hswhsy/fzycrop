@@ -15,3 +15,6 @@ Windows (in R)
    
 library(devtools)   
 install_github("hswhsy/ecocropK")
+    
+library(ecocropK)
+help(ecocropK)
