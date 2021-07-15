@@ -1,10 +1,10 @@
-# ecocropK
-Improved with fuzzy logic   
+# fzycrop
+Calculate suitability with fuzzy logic   
 Kim, H., S. W. Hyun, G. Hoogenboom, C. H. Porter and K. S. Kim, 2018: Fuzzy Union to Assess Climate Suitability of Annual Ryegrass (Lolium multiflorum), Alfalfa (Medicago sativa) and Sorghum (Sorghum bicolor). Scientific Reports 8(1), 10220.
 
 Linux (in terminal)  
 -------------
-R CMD INSTALL ecocropK   
+R CMD INSTALL fzycrop   
 
 Windows (in R)   
 -------------
@@ -14,9 +14,9 @@ Windows (in R)
 #install.packages("Rcpp")   
    
 library(devtools)   
-install_github("hswhsy/ecocropK")
+install_github("hswhsy/fzycrop")
 
 After install package
 ------------
-library(ecocropK)    
-help(ecocropK)
+library(fzycrop)    
+help(fzycrop)
