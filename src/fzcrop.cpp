@@ -9,7 +9,7 @@ int _mode = FZY_OR;
 int _resolution = FZY_CROP_MONTHLY;
 
 // [[Rcpp::export]]
-List ecocropK(NumericVector inparams,
+List fzycrop(NumericVector inparams,
               NumericVector Tmax,
               NumericVector Tmin,
               NumericVector Prcp,
