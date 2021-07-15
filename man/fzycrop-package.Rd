@@ -1,14 +1,14 @@
-\name{ecocropK-package}
-\alias{ecocropK-package}
+\name{fzycrop-package}
+\alias{fzycrop-package}
 \docType{package}
 \title{
-  ECOCROP-K
+  FZYCROP
 }
 \description{
-  R package for ECOCROP-K
+  R package for FZYCROP
 }
 \details{
-  R package for ECOCROP-K (2020-02-24)
+  R package for FZYCROP (2020-02-24)
 
   Model of Integrated Impact and Vulnerability Evaluation of climate Change (MOTIVE) project
 }
