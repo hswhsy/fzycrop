@@ -1,11 +1,11 @@
-Package: ecocropK
+Package: fzycrop
 Type: Package
 Title: Calculate suitability using fuzzy logic
 Version: 1.0
 Date: 2020-02-24
 Author: Kwang Soo Kim
 Maintainer: Kwang Soo Kim <luxkwang@snu.ac.kr>
-Description: Calculate suitability using fuzzy logic based on Ecocrop model
+Description: Calculate suitability using fuzzy logic
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.0)
 LinkingTo: Rcpp
