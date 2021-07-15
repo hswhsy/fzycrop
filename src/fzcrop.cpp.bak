@@ -4,7 +4,7 @@ using namespace std;
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-float ecocropK(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed=true){
+float fzycrop(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed=true){
     int mode = FZY_OR;
     int Resol = FZY_CROP_MONTHLY;
     int irrig;
