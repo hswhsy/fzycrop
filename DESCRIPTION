@@ -1,12 +1,11 @@
 Package: ecocropK
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Calculate suitability using fuzzy logic
 Version: 1.0
 Date: 2020-02-24
 Author: Kwang Soo Kim
 Maintainer: Kwang Soo Kim <luxkwang@snu.ac.kr>
-Description: One paragraph description of what the package does as one
-        or more full sentences.
+Description: Calculate suitability using fuzzy logic based on Ecocrop model
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.0)
 LinkingTo: Rcpp
