@@ -2,13 +2,18 @@
 using namespace std;
 
 void CropData::init(int value){
+    suitability = new float[value];
+    growingPeriod = new int[value];
+    climdata = new wxdata[value];
+
+    if(params.Gmin < durpr)
+        params.Gmin = durpr;
+    calcNSeason();
+
     suitEachSeason = new float*[value];
     for(int i = 0; i < value; i++){
         suitEachSeason[i] = new float[nSeason];
     }
-    suitability = new float[value];
-    growingPeriod = new int[value];
-    climdata = new wxdata[value];
 
     return;
 }

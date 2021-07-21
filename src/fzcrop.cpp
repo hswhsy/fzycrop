@@ -26,7 +26,6 @@ List fzycrop(NumericVector inparams,
     crop.setParams(inparams);
     crop.setRainfed(rainfed);
     crop.setMode(_mode);
-    crop.calcNSeason(); //need setParams, setResolution
     crop.init(size); //need calcNSeason
 
     int nSeason = crop.getNSeason();
