@@ -123,7 +123,7 @@ int CropData::getPeriodEach(int season){
     return params.Gmin/durpr + season;
 }
 
-void CropData::calcMaxSuit(){
+void CropData::calcMaxSuit(int size){
     maxSuit = 0.;
     for(int i=0;i<size;i++){
         if(suitability[i] > maxSuit) maxSuit = suitability[i];

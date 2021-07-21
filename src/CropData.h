@@ -72,7 +72,7 @@ class CropData
 
     void init(int);
     void Suitrun();
-    void calcMaxSuit();
+    void calcMaxSuit(int);
     void calcNSeason();
 };
 #endif

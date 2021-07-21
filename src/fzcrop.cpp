@@ -41,12 +41,12 @@ List fzycrop(NumericVector inparams,
         }
         crop.Suitrun();
     }
-    crop.calcMaxSuit();
+    crop.calcMaxSuit(size);
 
     //output
     List out;// = List::create(_["Suitability"], _["GrowingPeriod"]);
+    NumericVector suitEach(size);
     for(int s=0; s<nSeason; s++){
-        NumericVector suitEach(size);
         for(int i=0; i<size; i++){
             suitEach[i] = crop.getSuitEach(i,s);
         }
