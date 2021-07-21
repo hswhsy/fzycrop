@@ -17,18 +17,19 @@ List fzycrop(NumericVector inparams,
               String method = "median")
 {
     //init
+    stringstream name;
     int size = Tmax.size();
-    List out = List::create(_["Suitability"], _["GrowingPeriod"]);
-    NumericVector suit(size);
-    NumericVector growingPeriod(size);
 
     CropData crop;
-    crop.init(size);
-    crop.setRainfed(rainfed);
-    crop.setParams(inparams);
-    crop.setMode(_mode);
-    crop.setResolution(_resolution);
     crop.setSeasonSummary(method.get_cstring());
+    crop.setResolution(_resolution);
+    crop.setParams(inparams);
+    crop.setRainfed(rainfed);
+    crop.setMode(_mode);
+    crop.calcNSeason(); //need setParams, setResolution
+    crop.init(size); //need calcNSeason
+
+    int nSeason = crop.getNSeason();
 
     //run fzycrop
     for(int i=0;i<size;i++){
@@ -44,12 +45,26 @@ List fzycrop(NumericVector inparams,
     crop.calcMaxSuit();
 
     //output
+    List out;// = List::create(_["Suitability"], _["GrowingPeriod"]);
+    for(int s=0; s<nSeason; s++){
+        NumericVector suitEach(size);
+        for(int i=0; i<size; i++){
+            suitEach[i] = crop.getSuitEach(i,s);
+        }
+        name << "Suit" << crop.getPeriodEach(s) << "Mon";
+        out.push_back(suitEach,name.str().c_str());
+        name.str("");
+        name.clear();
+    }
+
+    NumericVector suit(size);
+    NumericVector growingPeriod(size);
     for(int i=0; i<size; i++){
         suit[i] = crop.getSuitability(i);
         growingPeriod[i] = crop.getGrowingPeriod(i);
     }
-    out[0] = suit;
-    out[1] = growingPeriod;
+    out.push_back(suit,"Suitability");
+    out.push_back(growingPeriod, "GrowingPeriod");
 
     return out;
 }

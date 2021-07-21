@@ -2,10 +2,14 @@
 using namespace std;
 
 void CropData::init(int value){
-    size = value;
-    suitability = new float[size];
-    growingPeriod = new int[size];
-    climdata = new wxdata[size];
+    suitEachSeason = new float*[value];
+    for(int i = 0; i < value; i++){
+        suitEachSeason[i] = new float[nSeason];
+    }
+    suitability = new float[value];
+    growingPeriod = new int[value];
+    climdata = new wxdata[value];
+
     return;
 }
 
@@ -102,6 +106,18 @@ float CropData::getMaxSuit(){
     return maxSuit;
 }
 
+float CropData::getSuitEach(int startMonth, int period){
+    return suitEachSeason[startMonth][period];
+}
+
+int CropData::getNSeason(){
+    return nSeason;
+}
+
+int CropData::getPeriodEach(int season){
+    return params.Gmin/durpr + season;
+}
+
 void CropData::calcMaxSuit(){
     maxSuit = 0.;
     for(int i=0;i<size;i++){
@@ -110,42 +126,27 @@ void CropData::calcMaxSuit(){
     return;
 }
 
+void CropData::calcNSeason(){
+    nSeason = params.Gmax/durpr - params.Gmin/durpr + 1;
+    return;
+}
+
 void CropData::Suitrun()
 {
-    int Season, nSeason;
+    int i, Season;
     float suitseason;
 
-    nSeason = 0;
+    for (int i = 0; i < nSeason; i++)
+        suitEachSeason[stMonth][i] = 0;
+
     Season = params.Gmin;
-
-    ////////////////////////////////////dynamic alloc///////////////////////////////////////////////////
-    //use -> float suitdata [npr]?
-    float* suitdata = new float[npr];
-
-    if (suitdata == NULL)
-    {
-        cout << "@ suitrun; suitdata memory allocatioin failed" << endl;
-        suitability[stMonth] = no_data;
-        return;
-    }
-
-    for (int i = 0; i < npr; i++)
-        suitdata[i] = 0;
-
-    while (Season / durpr <= params.Gmax / durpr) {
-//    while (Season <= params.Gmax ) {
+    for(i = 0; i < nSeason; i++){
         suitseason = fzsuit(Season);
-        suitdata[nSeason] = suitseason;
-
+        suitEachSeason[stMonth][i] = suitseason;
         Season += durpr;
-        nSeason++;
     }
 
-    GetMedian(suitdata, nSeason);
-
-    ////////////////////////////////////dynamic alloc///////////////////////////////////////////////////
-    delete[] suitdata;
-    suitdata = NULL;
+    GetMedian(suitEachSeason[stMonth], nSeason);
 
     return;
 }

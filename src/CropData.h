@@ -34,6 +34,7 @@ class CropData
     int stMonth;
     int* growingPeriod;
     float* suitability;
+    float** suitEachSeason;
     float maxSuit;
 
     //settings
@@ -43,30 +44,35 @@ class CropData
     int durpr;
     int npr;
     int seasonSummary;
+    int nSeason;
     float irrig;
 
     protected:
-    void GetMedian(float* daArray, int iSize);
-    float fzsuit(int season);
-    float calcsuit(suitvars* fvar);
+    void GetMedian(float*, int);
+    float fzsuit(int);
+    float calcsuit(suitvars*);
 
     public:
-    void setRainfed(bool rainfed);
-    void setParams(NumericVector inparams);
-    void setMode(int value);
-    void setResolution(int value);
-    void setMonth(int value);
-    void setTmin(int idx, float value);
-    void setTmax(int idx, float value);
-    void setPrcp(int idx, float value);
-    void setSeasonSummary(const char* method);
+    void setRainfed(bool);
+    void setParams(NumericVector);
+    void setMode(int);
+    void setResolution(int);
+    void setMonth(int);
+    void setTmin(int, float);
+    void setTmax(int, float);
+    void setPrcp(int, float);
+    void setSeasonSummary(const char*);
 
-    float getSuitability(int idx);
-    float getGrowingPeriod(int idx);
+    float getSuitability(int);
+    float getGrowingPeriod(int);
     float getMaxSuit();
+    float getSuitEach(int, int);
+    int getNSeason();
+    int getPeriodEach(int);
 
-    void init(int value);
+    void init(int);
     void Suitrun();
     void calcMaxSuit();
+    void calcNSeason();
 };
 #endif
