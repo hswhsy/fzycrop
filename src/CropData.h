@@ -45,7 +45,7 @@ class CropData
     int npr;
     int seasonSummary;
     int nSeason;
-    float irrig;
+    int irrig;
 
     protected:
     void GetMedian(float*, int);

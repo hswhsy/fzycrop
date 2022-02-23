@@ -25,9 +25,9 @@ void CropData::setMonth(int value){
 
 void CropData::setRainfed(bool rainfed)
 {
-    irrig = 1.;
+    irrig = 1;
     if(rainfed==true){
-        irrig = 0.;
+        irrig = 0;
     }
     return;
 }
@@ -226,14 +226,15 @@ float CropData::fzsuit(int season)
             params.Rmax / npr);
 
         // rain OR irrig
-        fvar[k].RN = fvar[k].RN + irrig - fvar[k].RN*irrig;
+        // fvar[k].RN = fvar[k].RN + irrig - fvar[k].RN*irrig;
         if (tmin < params.Tmin) // || tmax > params.Topmax)
         {
             fvar[k].RN = 0;
         }
 
         // high temp and no irrigation 
-        if (tmax > params.Topmax && irrig < 0.01)
+        // if (tmax > params.Topmax && irrig < 0.01)
+        if (tmax > params.Topmax && irrig == 0)
         {
             fvar[k].RN = 0;
         }
@@ -252,7 +253,7 @@ float CropData::fzsuit(int season)
             }
         }
 
-        if (fvar[k].RN == 0)
+        if (irrig==0 && fvar[k].RN == 0)
         {
             drymth++;
         }
