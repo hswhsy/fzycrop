@@ -29,5 +29,5 @@ tmin<-c(-5.9,-3.4,1.6,7.8,13.2,18.2,21.9,22.4,17.2,10.3,3.2,-3.2)
 prcp<-c(20.8,25,47.2,64.5,105.9,133.2,394.7,364.2,169.3,51.8,52.5,21.5)
 
 #run fzycrop
-fzycrop(params, tmax, tmin, prcp, TRUE, "median")
+fzycrop(params, tmax, tmin, prcp)
 }
