@@ -5,8 +5,13 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // fzycrop
-List fzycrop(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed, String method);
+float fzycrop(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed, String method);
 RcppExport SEXP _fzycrop_fzycrop(SEXP inparamsSEXP, SEXP TmaxSEXP, SEXP TminSEXP, SEXP PrcpSEXP, SEXP rainfedSEXP, SEXP methodSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -21,9 +26,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fzycrop_getList
+List fzycrop_getList(NumericVector inparams, NumericVector Tmax, NumericVector Tmin, NumericVector Prcp, LogicalVector rainfed, String method);
+RcppExport SEXP _fzycrop_fzycrop_getList(SEXP inparamsSEXP, SEXP TmaxSEXP, SEXP TminSEXP, SEXP PrcpSEXP, SEXP rainfedSEXP, SEXP methodSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type inparams(inparamsSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Tmax(TmaxSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Tmin(TminSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Prcp(PrcpSEXP);
+    Rcpp::traits::input_parameter< LogicalVector >::type rainfed(rainfedSEXP);
+    Rcpp::traits::input_parameter< String >::type method(methodSEXP);
+    rcpp_result_gen = Rcpp::wrap(fzycrop_getList(inparams, Tmax, Tmin, Prcp, rainfed, method));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_fzycrop_fzycrop", (DL_FUNC) &_fzycrop_fzycrop, 6},
+    {"_fzycrop_fzycrop_getList", (DL_FUNC) &_fzycrop_fzycrop_getList, 6},
     {NULL, NULL, 0}
 };
 

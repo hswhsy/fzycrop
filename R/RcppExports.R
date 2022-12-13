@@ -5,3 +5,7 @@ fzycrop <- function(inparams, Tmax, Tmin, Prcp, rainfed = TRUE, method = "median
     .Call('_fzycrop_fzycrop', PACKAGE = 'fzycrop', inparams, Tmax, Tmin, Prcp, rainfed, method)
 }
 
+fzycrop_getList <- function(inparams, Tmax, Tmin, Prcp, rainfed = TRUE, method = "median") {
+    .Call('_fzycrop_fzycrop_getList', PACKAGE = 'fzycrop', inparams, Tmax, Tmin, Prcp, rainfed, method)
+}
+

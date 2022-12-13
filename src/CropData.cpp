@@ -257,7 +257,7 @@ float CropData::fzsuit(int season)
         {
             drymth++;
         }
-#ifdef DROUGHT_STRESS
+#ifdef NO_DROUGHT_STRESS
         // disable the effect of dry month
         drymth = 0;
 #endif
@@ -278,6 +278,18 @@ float CropData::fzsuit(int season)
             if (tmax > params.Tmax)
                 heatmth++;
         }
+#ifdef TMIN_HEAT_STRESS
+        if (!stressed && tmin >= params.Topmin)
+        {
+            stress = 1/(params.Topmax-params.Topmin) * (tmin - params.Topmin);
+            stress *= (1-irrig);
+
+            if (stress > sum)
+                stress = sum;
+
+            sum -= stress;
+        }
+#endif
         if (!stressed && tmin <= params.Tmin)
         {
             stress = 1/(params.Tmin- params.Tkill) * (params.Tmin - tmin);
