@@ -7,16 +7,16 @@ Windows (in R)
 #install fzycrop    
 remotes::install_github("hswhsy/fzycrop")
 
+Linux (in R)  
+-------------
+#install fzycrop    
+remotes::install_github("hswhsy/fzycrop")
+
 Linux (in terminal)  
 -------------
 #get package and install    
 git clone https://github.com/hswhsy/fzycrop.git    
 R CMD INSTALL fzycrop
-
-Linux (in R)  
--------------
-#install fzycrop    
-remotes::install_github("hswhsy/fzycrop")
 
 After install package (in R)
 ------------
