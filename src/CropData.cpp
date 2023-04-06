@@ -324,10 +324,25 @@ void CropData::GetMedian(float* daArray, int iSize) {
     vector<int> dpMonth;
     float dMedian = 0.;
     int dMonth = 0;
+    int m = 0;
     for (int i = 0; i < iSize; ++i)
     {
-        dpSorted.push_back(daArray[i]);
-        dpMonth.push_back(params.Gmin / durpr + i);
+#ifdef ZERO_FILTER
+        if (daArray[i] == 0.)
+        {
+            if (m == 0)
+            {
+                m++;
+                dpSorted.push_back(0);
+                dpMonth.push_back(params.Gmin / durpr + i);
+            }
+        }
+        else
+#endif
+        {
+            dpSorted.push_back(daArray[i]);
+            dpMonth.push_back(params.Gmin / durpr + i);
+        }
     }
     iSize = dpSorted.size();
     for (int i = iSize - 1; i > 0; --i) {

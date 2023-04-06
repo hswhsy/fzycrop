@@ -55,13 +55,18 @@ List fzycrop_getList(NumericVector inparams,
     }
 
     NumericVector suit(size);
-    NumericVector growingPeriod(size);
     for(int i=0; i<size; i++){
         suit[i] = crop.getSuitability(i);
-        growingPeriod[i] = crop.getGrowingPeriod(i);
     }
     out.push_back(suit,"Suitability");
-    out.push_back(growingPeriod, "GrowingPeriod");
+
+    if(method=="max"){
+        NumericVector growingPeriod(size);
+        for(int i=0; i<size; i++){
+            growingPeriod[i] = crop.getGrowingPeriod(i);
+        }
+        out.push_back(growingPeriod, "GrowingPeriod");
+    }
 
     return out;
 }
