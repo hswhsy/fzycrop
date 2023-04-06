@@ -6,7 +6,7 @@ FZYCROP model
 }
 \description{
 Returns suitability values for each month for each growing season.
-Returns the median suitability of growing seasons for each month.
+Returns the median/max suitability of growing seasons for each month.
 }
 \usage{
 fzycrop_getList(inparams, Tmax, Tmin, Prcp, ...)
@@ -16,7 +16,6 @@ fzycrop_getList(inparams, Tmax, Tmin, Prcp, ...)
   \item{Tmax}{Vector of monthly maximum temperature (degrees C)}
   \item{Tmin}{Vector or monthly minimum temperature (degrees C)}
   \item{Prcp}{Vector of monthly precipitation (mm)}
-  \item{rainfed}{Logical. Rainfed (TRUE) or irrigated (FALSE)}
   \item{method}{String. Method for summarize seasonal suitability. "max" or "median"}
 }
 \references{

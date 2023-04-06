@@ -10,7 +10,6 @@ List fzycrop_getList(NumericVector inparams,
               NumericVector Tmax,
               NumericVector Tmin,
               NumericVector Prcp,
-              LogicalVector rainfed = true,
               String method = "median")
 {
     //init
@@ -20,10 +19,10 @@ List fzycrop_getList(NumericVector inparams,
     int _resolution = FZY_CROP_MONTHLY;
 
     CropData crop;
+    crop.setRainfed(true);
     crop.setSeasonSummary(method.get_cstring());
     crop.setResolution(_resolution);
     crop.setParams(inparams);
-    crop.setRainfed(rainfed);
     crop.setMode(_mode);
     crop.init(size); //need calcNSeason
 
