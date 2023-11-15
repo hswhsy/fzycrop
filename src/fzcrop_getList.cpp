@@ -64,6 +64,9 @@ List fzycrop_getList(NumericVector inparams,
         NumericVector growingPeriod(size);
         for(int i=0; i<size; i++){
             growingPeriod[i] = crop.getGrowingPeriod(i);
+            if(suit[i] == 0){
+                growingPeriod[i] = NumericVector::get_na();
+            }
         }
         out.push_back(growingPeriod, "GrowingPeriod");
     }
