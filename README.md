@@ -6,6 +6,8 @@ Windows
 -------------
 #Download and install Rtools from    
 #https://cran.r-project.org/bin/windows/Rtools/   
+#use mirror site    
+#(Korea) https://cran.yu.ac.kr/bin/windows/Rtools/    
 
 #(in R) install remotes and fzycrop    
 if(!require(remotes)) install.packages("remotes")   
