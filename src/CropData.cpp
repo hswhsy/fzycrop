@@ -270,7 +270,6 @@ float CropData::fzsuit(int season)
         {
             stress = 1/(params.Tmax-params.Topmax) * (tmax - params.Topmax);
             stress *= (1-irrig);
-
             if (stress > sum)
                 stress = sum;
 
@@ -278,18 +277,6 @@ float CropData::fzsuit(int season)
             if (tmax > params.Tmax)
                 heatmth++;
         }
-#ifdef TMIN_HEAT_STRESS
-        if (!stressed && tmin >= params.Topmin)
-        {
-            stress = 1/(params.Topmax-params.Topmin) * (tmin - params.Topmin);
-            stress *= (1-irrig);
-
-            if (stress > sum)
-                stress = sum;
-
-            sum -= stress;
-        }
-#endif
         if (!stressed && tmin <= params.Tmin)
         {
             stress = 1/(params.Tmin- params.Tkill) * (params.Tmin - tmin);
@@ -301,6 +288,7 @@ float CropData::fzsuit(int season)
             if (tmin < params.Tkill)
                 coldmth++;
         }
+
     }
 
     suit = sum / mpr;
