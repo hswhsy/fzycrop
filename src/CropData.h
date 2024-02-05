@@ -78,6 +78,7 @@ class CropData
     int getNSeason();
     int getPeriodEach(int);
     int getSeasonSummary();
+    bool getVernal();
 
     void init(int);
     void Suitrun();
