@@ -38,6 +38,7 @@ class CropData
     float* suitability;
     float** suitEachSeason;
     float maxSuit;
+    int* dormancyPeriod;
 
     //settings
     int mode;
@@ -70,11 +71,13 @@ class CropData
     void setSeasonSummary(const char*);
 
     float getSuitability(int);
-    float getGrowingPeriod(int);
     float getMaxSuit();
     float getSuitEach(int, int);
+    int getGrowingPeriod(int);
+    int getDormancyPeriod(int);
     int getNSeason();
     int getPeriodEach(int);
+    int getSeasonSummary();
 
     void init(int);
     void Suitrun();

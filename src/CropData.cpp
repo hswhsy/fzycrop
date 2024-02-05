@@ -5,6 +5,7 @@ void CropData::init(int value){
     suitability = new float[value];
     growingPeriod = new int[value];
     climdata = new wxdata[value];
+    dormancyPeriod = new int[value];
 
     if(params.Gmin < durpr)
         params.Gmin = durpr;
@@ -129,10 +130,6 @@ float CropData::getSuitability(int idx){
     return suitability[idx];
 }
 
-float CropData::getGrowingPeriod(int idx){
-    return growingPeriod[idx];
-}
-
 float CropData::getMaxSuit(){
     return maxSuit;
 }
@@ -141,12 +138,24 @@ float CropData::getSuitEach(int startMonth, int period){
     return suitEachSeason[startMonth][period];
 }
 
+int CropData::getGrowingPeriod(int idx){
+    return growingPeriod[idx];
+}
+
+int CropData::getDormancyPeriod(int idx){
+    return dormancyPeriod[idx];
+}
+
 int CropData::getNSeason(){
     return nSeason;
 }
 
 int CropData::getPeriodEach(int season){
     return params.Gmin/durpr + season;
+}
+
+int CropData::getSeasonSummary(){
+    return seasonSummary;
 }
 
 void CropData::calcMaxSuit(int size){
@@ -450,6 +459,7 @@ float CropData::fzsuit_vernal(int season)
     }
     //calc vernalization end
 
+    dormancyPeriod[stMonth] = quiescence_pr;
     int end;
     end = quiescence_pr + mpr;
     if(end > 12) end = 0;
