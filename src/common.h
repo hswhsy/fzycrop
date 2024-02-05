@@ -23,5 +23,6 @@ float THBox(float tmax, float tmin, float Tmin, float Topmin, float Topmax, floa
 float Bell(float x, float* params);
 float WeightedGaussian(float x, float* params);
 float Trapezoid(float x, float Pmin, float POPmin, float POPmax, float Pmax);
+void ChillDayModel(float tmin, float tmax, float Tc, float& Cd, float& Ca);
 
 #endif

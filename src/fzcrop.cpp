@@ -10,6 +10,8 @@ float fzycrop(NumericVector inparams,
               NumericVector Tmax,
               NumericVector Tmin,
               NumericVector Prcp,
+              NumericVector irrig = 0,
+              LogicalVector vernal = false,
               String method = "median")
 {
     //init
@@ -19,7 +21,8 @@ float fzycrop(NumericVector inparams,
     int _resolution = FZY_CROP_MONTHLY;
 
     CropData crop;
-    crop.setRainfed(true);
+    crop.setIrrig(irrig[0]);
+    crop.setVernal(vernal[0]);
     crop.setSeasonSummary(method.get_cstring());
     crop.setResolution(_resolution);
     crop.setParams(inparams);
