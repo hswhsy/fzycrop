@@ -63,15 +63,7 @@ List fzycrop_getList(NumericVector inparams,
     }
     out.push_back(suit,"Suitability");
 
-    if(vernal){
-        NumericVector dormancyPeriod(size);
-        for(int i=0; i<size; i++){
-            dormancyPeriod[i] = crop.getDormancyPeriod(i);
-        }
-        out.push_back(dormancyPeriod, "DormancyPeriod");
-    }
-
-    if(crop.getSeasonSummary()==SUMMARY_MAX){
+    if(method=="max"){
         NumericVector growingPeriod(size);
         for(int i=0; i<size; i++){
             growingPeriod[i] = crop.getGrowingPeriod(i);
