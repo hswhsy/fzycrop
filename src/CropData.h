@@ -14,7 +14,6 @@ class CropData
         int Gmin, Gmax;
         float Tkill, Tmin, Topmin, Topmax, Tmax;
         float Rmin, Ropmin, Ropmax, Rmax;
-        float Tc, Cr, TkillR;
     } parameter;
     parameter params;
 
@@ -25,7 +24,6 @@ class CropData
         float prcp;
     } wxdata;
     wxdata* climdata;
-    float tminMin;
 
     //suitabilies
     typedef struct SuitVars {
@@ -47,24 +45,20 @@ class CropData
     int npr;
     int seasonSummary;
     int nSeason;
-    float irrig;
-    bool vernal;
+    int irrig;
 
     protected:
     void GetMedian(float*, int);
     float fzsuit(int);
-    float fzsuit_vernal(int);
     float calcsuit(suitvars*);
 
     public:
-    void setIrrig(float);
-    void setVernal(bool);
+    void setRainfed(bool);
     void setParams(NumericVector);
     void setMode(int);
     void setResolution(int);
     void setMonth(int);
     void setTmin(int, float);
-    void setTminMin();
     void setTmax(int, float);
     void setPrcp(int, float);
     void setSeasonSummary(const char*);

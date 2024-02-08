@@ -1,36 +1,5 @@
 #include "common.h"
 
-void ChillDayModel(float tmin, float tmax, float Tc, float& Cd, float& Ca)
-{
-    float tavg = (tmax + tmin) / 2.;
-    if (0 <= tmin) {
-        if ( Tc <= tmin) { //0 < Tc < Tmin < Tmax
-            Cd = 0.;
-            Ca = tavg - Tc;
-        }
-        else {
-            if (Tc <= tmax) { // 0 < Tmin < Tc < Tmax
-                Cd = -((tavg - tmin) - (tmax - Tc) / 2.);
-                Ca = (tmax - Tc) / 2.;
-            }
-            else{ // 0 < Tmin < Tmax < Tc
-                Cd = -(tavg - tmin);
-                Ca = 0.;
-            }
-        }
-    }
-    else {
-        if (tmax <= Tc) { // Tmin < 0 < Tmax < Tc
-            Cd = -(tmax / (tmax - tmin)) * (tmax / 2.);
-            Ca = 0.;
-        }
-        else { // Tmin < 0 < Tc < Tmax
-            Cd = -((tmax / (tmax - tmin)) * (tmax / 2.) - (tmax - Tc) / 2.);
-            Ca = (tmax - Tc) /2.;
-        }
-    }
-}
-
 float Bell(float x, float* params) {
     return 1 / (1 + pow(fabs((x - params[2]) / params[0]), (2 * params[1])));
 }
