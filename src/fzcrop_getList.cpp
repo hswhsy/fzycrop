@@ -63,7 +63,7 @@ List fzycrop_getList(NumericVector inparams,
     }
     out.push_back(suit,"Suitability");
 
-    if(crop.getVernal()==TRUE){
+    if(vernal){
         NumericVector dormancyPeriod(size);
         for(int i=0; i<size; i++){
             dormancyPeriod[i] = crop.getDormancyPeriod(i);

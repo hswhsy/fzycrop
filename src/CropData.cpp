@@ -158,10 +158,6 @@ int CropData::getSeasonSummary(){
     return seasonSummary;
 }
 
-bool CropData::getVernal(){
-    return vernal;
-}
-
 void CropData::calcMaxSuit(int size){
     maxSuit = 0.;
     for(int i=0;i<size;i++){
@@ -406,7 +402,6 @@ float CropData::fzsuit_vernal(int season)
     rest = true;
     quiescence = false;
     flowering = false;
-
     for (k = 0; k < 12; k++) {
         tmin = climdata[k].tmin;
         tmax = climdata[k].tmax;
